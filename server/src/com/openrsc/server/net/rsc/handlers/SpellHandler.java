@@ -1820,9 +1820,9 @@ public class SpellHandler implements PayloadProcessor<SpellStruct, OpcodeIn> {
 	}
 
 	private void handleTeleport(Player player, SpellDef spell, Spells spellEnum) {
-		if (!checkAndRemoveRunes(player, spell)) {
-			return;
-		}
+		// if (!checkAndRemoveRunes(player, spell)) {
+		// 	return;
+		// }
 		if (player.getLocation().inKaramja() || player.getLocation().inBrimhaven()) {
 			while (player.getCarriedItems().getInventory().countId(ItemId.KARAMJA_RUM.id()) > 0) {
 				player.getCarriedItems().remove(new Item(ItemId.KARAMJA_RUM.id()));

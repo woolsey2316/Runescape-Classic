@@ -4,6 +4,7 @@ import com.openrsc.server.constants.ItemId;
 import com.openrsc.server.constants.Skill;
 import com.openrsc.server.constants.Skills;
 import com.openrsc.server.content.SkillCapes;
+import com.openrsc.server.model.entity.EntityType;
 import com.openrsc.server.model.entity.Mob;
 import com.openrsc.server.model.entity.player.Player;
 import com.openrsc.server.model.entity.player.Prayers;
@@ -31,8 +32,15 @@ public class CombatFormula {
 	 */
 	private static int calculateMeleeDamage(final Mob source) {
 		int maxRoll = getMeleeDamage(source);
-		int chosenHit = maxRoll <= 0 ? 0 : (DataConversions.getRandom().nextInt(maxRoll) + 320) / 640;
+		int chosenHit;
+	       	
+		if (source.getEntityType() == EntityType.PLAYER) {
+			chosenHit = maxRoll <= 0 ? 0 : (DataConversions.getRandom().nextInt(maxRoll) + 320 + 3*640) / 640;
+		} else {	
+			chosenHit = maxRoll <= 0 ? 0 : (DataConversions.getRandom().nextInt(maxRoll) + 320) / 640;
+		}
 		return chosenHit;
+
 	}
 
 	/**

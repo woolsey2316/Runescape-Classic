@@ -8828,13 +8828,13 @@ public final class mudclient implements Runnable {
 									int k3 = 0;
 									for (Entry<Integer, Integer> e : EntityHandler.getSpellDef(spellIndex)
 										.getRunesRequired()) {
-										if (!hasRunes(e.getKey(), e.getValue())) {
-											this.showMessage(false, null,
-												"You don't have all the reagents you need for this spell",
-												MessageType.GAME, 0, null);
-											k3 = -1;
-											break;
-										}
+										// if (!hasRunes(e.getKey(), e.getValue())) {
+										// 	this.showMessage(false, null,
+										// 		"You don't have all the reagents you need for this spell",
+										// 		MessageType.GAME, 0, null);
+										// 	k3 = -1;
+										// 	break;
+										// }
 										k3++;
 									}
 									if (k3 == EntityHandler.getSpellDef(spellIndex).getRuneCount()) {
